@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class AppUser {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,7 +22,15 @@ public class AppUser {
     @ManyToMany(fetch =FetchType.EAGER)
     private Collection<AppRole> appRoles=new ArrayList<>();
 
-    public <E> AppUser(Object o, String admin, String admin1, ArrayList<E> es) {
+
+    public AppUser() {
+    }
+
+    public AppUser(Long id, String username, String password, Collection<AppRole> appRoles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.appRoles = appRoles;
     }
 
     public void addRole(AppRole role) {
