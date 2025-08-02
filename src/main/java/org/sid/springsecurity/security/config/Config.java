@@ -55,6 +55,7 @@ public class Config extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
 
+                .antMatchers(HttpMethod.GET, "api/test/deploy/").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/notification/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/notification/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/notification/**").permitAll()
